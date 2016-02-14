@@ -86,6 +86,7 @@ echo "#####################################search for web servers###############
 find $FIRMDIR -name "lighttpd" | cut -c${#FIRMDIR}- | tee -a $file
 find $FIRMDIR -name "alphapd" | cut -c${#FIRMDIR}- | tee -a $file
 find $FIRMDIR -name "httpd" | cut -c${#FIRMDIR}- | tee -a $file
+find $FIRMDIR -name "nginx" | cut -c${#FIRMDIR}- | tee -a $file
 echo | tee -a $file
 echo "Search for important binaries" | tee -a $file
 echo "#####################################important binaries################################" | tee -a $file
