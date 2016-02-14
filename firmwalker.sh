@@ -23,6 +23,7 @@ echo "#####################################passwd###############################
 find $FIRMDIR -name "passwd" | cut -c${#FIRMDIR}- | tee -a $file
 echo "#####################################shadow############################################" | tee -a $file
 find $FIRMDIR -name "shadow" | cut -c${#FIRMDIR}- | tee -a $file
+find $FIRMDIR -name "passwd-" | cut -c${#FIRMDUR}- | tee -a $file
 echo | tee -a $file
 echo "List etc/ssl directory" | tee -a $file
 echo "#####################################etc/ssl###########################################" | tee -a $file
@@ -36,6 +37,7 @@ echo "Search for configuration files" | tee -a $file
 echo "#####################################configuration files###############################" | tee -a $file
 find $FIRMDIR -name "*.conf" | cut -c${#FIRMDIR}- | tee -a $file
 find $FIRMDIR -name "*.cfg" | cut -c${#FIRMDIR}- | tee -a $file
+find $FIRMDIR -name "*.config" | cut -c${#FIRMDIR}- | tee -a $file
 echo | tee -a $file
 echo "Search for SSL related files" | tee -a $file
 echo "#####################################SSL files#########################################" | tee -a $file
