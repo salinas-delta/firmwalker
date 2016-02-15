@@ -12,6 +12,11 @@ fi
 FIRMFILE=$1
 file="log.txt"
 
+#Get the parts for files:
+basefile=$(basename $1)
+dirfile=$(dirname $1)
+binwalkdir="$dirfile/_$basefile.extracted/"
+
 # Clear the previous log file
 rm $file
 
@@ -27,11 +32,8 @@ binwalk -e $1 > /tmp/binwalk-output.txt
 echo "[i] Binwalk output is:" | tee -a $file
 cat /tmp/binwalk-output.txt | tee -a $file
 echo "[i] Binwalk made the following files in" $(dirname $1)/_*
-ls -d -1 $(dirname $1)/_*/* | tee /tmp/bin-files.txt
+ls -d -1 "$bindwalkdir" | tee /tmp/bin-files.txt
 for i in `cat /tmp/bin-files.txt`; do unsquashfs $i; done
 
-# Let's go fishing...
-
-# Bring in the analysis:
 
 
