@@ -43,6 +43,7 @@ echo "[i] Search for SSL related files" | tee -a $file
 echo " [-] SSL files" | tee -a $file
 find $FIRMDIR -name "*.pem" | cut -c${#FIRMDIR}- | tee -a $file
 find $FIRMDIR -name "*.crt" | cut -c${#FIRMDIR}- | tee -a $file
+find $FIRMDIR -name "*.der" | cut -c${#FIRMDIR}- | tee -a $file
 find $FIRMDIR -name "*.cer" | cut -c${#FIRMDIR}- | tee -a $file
 find $FIRMDIR -name "*.p7b" | cut -c${#FIRMDIR}- | tee -a $file
 find $FIRMDIR -name "*.p12" | cut -c${#FIRMDIR}- | tee -a $file
@@ -86,6 +87,7 @@ find $FIRMDIR -name "lighttpd" | cut -c${#FIRMDIR}- | tee -a $file
 find $FIRMDIR -name "alphapd" | cut -c${#FIRMDIR}- | tee -a $file
 find $FIRMDIR -name "httpd" | cut -c${#FIRMDIR}- | tee -a $file
 find $FIRMDIR -name "nginx" | cut -c${#FIRMDIR}- | tee -a $file
+find $FIRMDIR -name "boa" | cut -c${#FIRMDIR}- | tee -a $file
 echo | tee -a $file
 echo "[i] Search for important binaries" | tee -a $file
 find $FIRMDIR -name "ssh" | cut -c${#FIRMDIR}- | tee -a $file
@@ -95,3 +97,11 @@ find $FIRMDIR -name "tftp" | cut -c${#FIRMDIR}- | tee -a $file
 find $FIRMDIR -name "dropbear" | cut -c${#FIRMDIR}- | tee -a $file
 find $FIRMDIR -name "busybox" | cut -c${#FIRMDIR}- | tee -a $file
 find $FIRMDIR -name "telnet" | cut -c${#FIRMDIR}- | tee -a $file
+echo | tee -a $file
+echo "[i] iptables dump..."
+if [ -e $FIRMDIR/etc/sysconfig/iptables ] ; then
+	echo " [-] $FIRMDIR/etc/sysconfig/iptables found... \n\tDumping contents:"
+	cat $FIRMDIR/etc/sysconfig/iptables
+else
+	echo " [-] No iptables file found in $FIRMDIR/etc/sysconfig/iptables..."
+fi
